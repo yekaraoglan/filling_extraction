@@ -1,0 +1,25 @@
+input_topic: "/filling_extractor/input"
+output_topic: "/filling_extractor/output"
+
+filling_extractor:
+  range_condition:
+    axis: "z"
+    min_value: 0.0
+    max_value: 0.9
+
+  plane_segmentation:
+    distance_threshold: 0.01
+    set_negative: true
+
+  color_filter:
+    min_r: 200
+    min_g: 200
+    min_b: 200
+    keep_organized: true
+
+  removing_statistical_outliers:
+    mean_k: 50
+    std_dev_mul_threshold: 1.0
+
+  uniform_sampling:
+    radius_search: 0.02

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find filling_extraction)/launch/point_cloud_xyzrgb.launch" />
+    <node name="depth_rgb_synch" pkg="filling_extraction" type="depth-rgb-synch.py" output="screen"/>
+    
+    <rosparam command="load" file="$(find filling_extraction)/config/extract_config.yaml"/>
+    <node name="extract_fillings" pkg="filling_extraction" type="filling_extractor_node" output="screen" />
+</launch>
