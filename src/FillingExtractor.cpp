@@ -48,15 +48,15 @@ FillingExtractor::FillingExtractor(ros::NodeHandle& nh) {
 // Initialize subscriber for input point cloud 
 void FillingExtractor::initializeSubscribers() {
     nh.param<std::string>("filling_extractor/input_topic", this->input_topic, "/filling_extractor/input");
-    this->cloud_sub = this->nh.subscribe("/camera/depth_registered/my_points", 1, &FillingExtractor::cloud_cb, this);
+    this->cloud_sub = this->nh.subscribe(this->input_topic, 1, &FillingExtractor::cloud_cb, this);
 }
 
 // Initialize publishers for output point cloud, distance and plane coefficients informations
 void FillingExtractor::initializePublishers() {
     nh.param<std::string>("filling_extractor/output_topic", this->output_topic, "/filling_extractor/output");
     nh.param<std::string>("filling_extractor/distance_topic", this->distance_topic, "/filling_extractor/distance");
-    this->cloud_pub = this->nh.advertise<sensor_msgs::PointCloud2>(output_topic, 1);
-    this->distance_pub = this->nh.advertise<std_msgs::Float64>(distance_topic, 1);
+    this->cloud_pub = this->nh.advertise<sensor_msgs::PointCloud2>(this->output_topic, 1);
+    this->distance_pub = this->nh.advertise<std_msgs::Float64>(this->distance_topic, 1);
     this->coeff_pub = this->nh.advertise<std_msgs::Float64MultiArray>("/filling_extractor/coeff", 1);
 }
 
