@@ -6,3 +6,4 @@ Finding maximum height of filling, plane coefficients of the table and more in a
 ## Usage 
 roslaunch filling_extraction extract_fillers.launch
 
+### PCL 1.7 Required to use UniformSampling object. If you have older versions of PCL, you can use RandomSample or other downsampling methods.  
