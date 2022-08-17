@@ -31,9 +31,6 @@ add_library(filling_extraction
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(main src/main.cpp)
-target_link_libraries(main ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-
 add_executable(filling_extractor_node src/filling_extractor_node.cpp src/FillingExtractor)
 target_link_libraries(filling_extractor_node ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
